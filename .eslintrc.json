@@ -1,0 +1,12 @@
+{
+    "extends": [
+        "eslint:recommended",
+        "plugin:vue/vue3-recommended",
+        ".eslintrc-todo.json"
+    ],
+    "plugins": [],
+    "parserOptions": {},
+    "env": {"browser": true},
+    "globals": {},
+    "rules": {}
+}
