@@ -2,7 +2,7 @@
 import ComponentsHeader from '@/Components/ComponentsHeader.vue';
 
 defineProps({
-  searchWords: {
+  searchLists: {
     type: Array,
     required: true,
   },
@@ -37,8 +37,8 @@ defineProps({
         </thead>
         <tbody>
           <tr
-            v-for="searchWord in searchWords"
-            :key="searchWord.id"
+            v-for="searchList in searchLists"
+            :key="searchList.id"
           >
             <td class="border px-4 py-2">
               <div class="form-check flex justify-center">
@@ -55,8 +55,8 @@ defineProps({
             </td>
             <td class="border px-4 py-2">
               <!-- TODO:hover時に何かアニメーション付与する -->
-              <a :href="`/name-search/${searchWord.id}/edit`">
-                {{ searchWord.name }}
+              <a :href="`/name-search/${searchList.id}/edit`">
+                {{ searchList.name }}
               </a>
             </td>
           </tr>

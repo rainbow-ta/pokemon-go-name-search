@@ -2,10 +2,10 @@
 
 namespace Database\Seeders;
 
-use App\Models\SearchWord;
+use App\Models\SearchList;
 use Illuminate\Database\Seeder;
 
-class SearchWordSeeder extends Seeder
+class SearchListSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,15 +14,15 @@ class SearchWordSeeder extends Seeder
      */
     public function run()
     {
-        SearchWord::create([
+        SearchList::create([
             'name' => '個体値100',
             'user_id' => 1,
         ]);
-        SearchWord::create([
+        SearchList::create([
             'name' => 'お気に入り',
             'user_id' => 1,
         ]);
-        SearchWord::create([
+        SearchList::create([
             'name' => '個体値100とお気に入り',
             'user_id' => 1,
         ]);

@@ -2,7 +2,7 @@
 import ComponentsHeader from '@/Components/ComponentsHeader.vue';
 
 defineProps({
-  // searchWords: {
+  // searchLists: {
   //   type: Array,
   //   required: true,
   // },
