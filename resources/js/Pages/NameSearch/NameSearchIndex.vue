@@ -22,7 +22,7 @@ defineProps({
     </div>
     <div class="flex justify-center">
       <table class="table-fixed min-w-full">
-        <thead>
+        <thead class="bg-gray-50">
           <tr>
             <th class="w-1/12 px-4 py-2">
               選択
@@ -54,7 +54,10 @@ defineProps({
               <span class="cursor-pointer"><font-awesome-icon icon="fa-solid fa-copy" /></span>
             </td>
             <td class="border px-4 py-2">
-              {{ searchWord.name }}
+              <!-- TODO:hover時に何かアニメーション付与する -->
+              <a :href="`/name-search/${searchWord.id}/edit`">
+                {{ searchWord.name }}
+              </a>
             </td>
           </tr>
         </tbody>

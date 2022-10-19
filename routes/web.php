@@ -35,5 +35,5 @@ Route::middleware([
 });
 
 Route::middleware(['auth', 'verified'])->group(function () {
-    Route::resource('/', App\Http\Controllers\NameSearchController::class)->only(['index']);
+    Route::resource('/name-search', App\Http\Controllers\NameSearchController::class)->except(['show']);
 });
