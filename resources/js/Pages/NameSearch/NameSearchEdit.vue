@@ -51,11 +51,16 @@ const makeImagePath = pokedexNo => {
             mr-5
             w-96
           "
-          placeholder="Search"
+          placeholder="ポケモン or フィルターを検索"
         >
+      </div>
 
+      <div class="flex items-center mb-5">
         <button class="bg-gray-200 hover:bg-gray-400 text-gray-700 py-2 px-4 rounded mr-3">
-          コピー
+          検索文字列をコピー
+        </button>
+        <button class="bg-red-500 hover:bg-red-700 text-white py-2 px-4 rounded">
+          タグを削除
         </button>
       </div>
 
