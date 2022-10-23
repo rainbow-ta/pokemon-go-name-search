@@ -19,7 +19,7 @@ class PokemonSeeder extends Seeder
         $pokemons = json_decode($json);
 
         foreach ($pokemons as $key => $value) {
-            Pokemon::create([
+            Pokemon::insert([
                 'pokedex_no' => $value->id,
                 'name' => $value->name->japanese,
             ]);

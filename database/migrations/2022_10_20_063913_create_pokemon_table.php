@@ -16,7 +16,6 @@ return new class extends Migration {
             $table->id();
             $table->unsignedInteger('pokedex_no')->nullable(false)->unique();
             $table->string('name')->nullable(false);
-            $table->timestamps();
         });
     }
 

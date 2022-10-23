@@ -14,8 +14,9 @@ return new class extends Migration {
     {
         Schema::create('filters', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->timestamps();
+            $table->string('name')->nullable(false);
+            $table->string('query')->nullable(false);
+            $table->string('description');
         });
     }
 
