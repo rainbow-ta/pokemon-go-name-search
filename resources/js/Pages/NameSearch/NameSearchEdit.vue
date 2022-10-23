@@ -27,7 +27,7 @@ const makeImagePath = pokedexNo => {
   <ComponentsHeader />
 
   <div class="max-w-screen-2xl px-4 md:px-12 mx-auto">
-    <div class="mb-5">
+    <div class="mb-10">
       <div class="flex items-center mb-5">
         <input
           id="exampleSearch"
@@ -57,53 +57,91 @@ const makeImagePath = pokedexNo => {
         <button class="bg-gray-200 hover:bg-gray-400 text-gray-700 py-2 px-4 rounded mr-3">
           コピー
         </button>
-
-        <button class="bg-gray-200 hover:bg-gray-400 text-gray-700 py-2 px-4 rounded">
-          検索文字列を表示
-        </button>
       </div>
 
       <div class="flex items-center">
-        <div
-          class="inline-flex rounded-md shadow-sm"
-          role="group"
+        <label
+          for="default-toggle"
+          class="inline-flex relative items-center cursor-pointer mr-5"
         >
-          <button
-            type="button"
-            class="py-2 px-4 text-sm font-medium text-gray-900 bg-white rounded-l-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-blue-500 dark:focus:text-white"
+          <input
+            id="default-toggle"
+            type="checkbox"
+            value=""
+            class="sr-only peer"
           >
-            ポケモン
-          </button>
-          <button
-            type="button"
-            class="py-2 px-4 text-sm font-medium text-gray-900 bg-white border-t border-b border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-blue-500 dark:focus:text-white"
+          <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600" />
+          <span class="ml-3">ポケモン</span>
+        </label>
+        <label
+          for="default-toggle"
+          class="inline-flex relative items-center cursor-pointer mr-5"
+        >
+          <input
+            id="default-toggle"
+            type="checkbox"
+            value=""
+            class="sr-only peer"
           >
-            検索フィルタ
-          </button>
-          <button
-            type="button"
-            class="py-2 px-4 text-sm font-medium text-gray-900 bg-white rounded-r-md border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-blue-500 dark:focus:text-white"
+          <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600" />
+          <span class="ml-3">検索フィルター</span>
+        </label>
+        <label
+          for="default-toggle"
+          class="inline-flex relative items-center cursor-pointer mr-5"
+        >
+          <input
+            id="default-toggle"
+            type="checkbox"
+            value=""
+            class="sr-only peer"
           >
-            保存した条件
-          </button>
-        </div>
+          <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600" />
+          <span class="ml-3">保存した条件</span>
+        </label>
+        <label
+          for="default-toggle"
+          class="inline-flex relative items-center cursor-pointer"
+        >
+          <input
+            id="default-toggle"
+            type="checkbox"
+            value=""
+            class="sr-only peer"
+          >
+          <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600" />
+          <span class="ml-3">検索文字列</span>
+        </label>
       </div>
     </div>
 
-    <div class="grid grid-cols-6">
+    <div class="grid grid-cols-6 mb-5">
       <label
         v-for="filter in filters"
         :key="filter.id"
         for=""
-        class="flex items-center"
+        class="mb-2"
       >
-        <input
-          id="flexCheckDefault3"
-          class="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 my-1 align-top bg-no-repeat bg-center bg-contain float-left cursor-pointer"
-          type="checkbox"
-          value=""
-        >
-        <span class="ml-3">{{ filter.name }}</span>
+        <div class="flex items-center mb-1">
+          <input
+            id="flexCheckDefault3"
+            class="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 my-1 align-top bg-no-repeat bg-center bg-contain float-left cursor-pointer"
+            type="checkbox"
+            value=""
+          >
+          <span class="ml-3">{{ filter.name }}</span>
+        </div>
+        <div class="ml-5">
+          <label for="">
+            <input
+              id="flexCheckDefault3"
+              class="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 my-1 align-top bg-no-repeat bg-center bg-contain float-left cursor-pointer"
+              type="checkbox"
+              value=""
+            >
+            <span class="ml-3">&検索</span>
+          </label>
+        </div>
       </label>
     </div>
 
