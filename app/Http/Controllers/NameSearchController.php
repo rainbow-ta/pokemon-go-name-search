@@ -23,7 +23,7 @@ class NameSearchController extends Controller
     public function store(TagCreateRequest $request)
     {
         SearchList::create([
-            'name' => $request->name,
+            'name' => $request->tagName,
             'user_id' => Auth::id(),
         ]);
 

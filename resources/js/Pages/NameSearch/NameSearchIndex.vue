@@ -16,15 +16,18 @@ defineProps({
 });
 
 const form = useForm({
-  name: null,
+  tagName: null,
 })
 const isSuccessMessage = ref(false);
 
 const submit = () => {
   Inertia.post('/name-search', form, {
     onSuccess: () => {
-      form.reset('name'),
+      form.reset('tagName'),
       isSuccessMessage.value = true
+    },
+    onError: () => {
+      isSuccessMessage.value = false
     },
   })
 }
@@ -62,7 +65,7 @@ const submit = () => {
     <form @submit.prevent="submit">
       <div class="flex items-center mb-5">
         <input
-          v-model="form.name"
+          v-model="form.tagName"
           type="search"
           class="
             form-control
