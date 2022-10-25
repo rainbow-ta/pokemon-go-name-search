@@ -15,7 +15,7 @@ class NameSearchController extends Controller
     public function index()
     {
         return Inertia::render('NameSearch/NameSearchIndex', [
-            'searchLists' => SearchList::where('user_id', Auth::id())->get(),
+            'searchLists' => SearchList::where('user_id', Auth::id())->latest()->get(),
         ]);
     }
 
