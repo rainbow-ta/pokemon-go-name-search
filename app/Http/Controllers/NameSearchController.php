@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\TagCreateRequest;
 use App\Models\Filter;
 use App\Models\Pokemon;
 use App\Models\SearchList;
@@ -17,6 +18,16 @@ class NameSearchController extends Controller
         return Inertia::render('NameSearch/NameSearchIndex', [
             'searchLists' => SearchList::where('user_id', Auth::id())->latest()->get(),
         ]);
+    }
+
+    public function store(TagCreateRequest $request)
+    {
+        SearchList::create([
+            'name' => $request->name,
+            'user_id' => Auth::id(),
+        ]);
+
+        return redirect()->route('nameSearch.name-search.index');
     }
 
     public function edit(Request $request, $id)

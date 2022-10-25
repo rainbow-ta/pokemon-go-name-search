@@ -9,6 +9,11 @@ class SearchList extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'name',
+        'user_id',
+    ];
+
     public function searchListFilters()
     {
         return $this->hasMany(SearchListFilter::class);
