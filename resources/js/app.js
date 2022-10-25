@@ -9,8 +9,8 @@ import { ZiggyVue } from '../../vendor/tightenco/ziggy/dist/vue.m';
 /* fontawesome */
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import { faCopy } from '@fortawesome/free-solid-svg-icons'
-library.add(faCopy)
+import { faCopy, faCircleCheck } from '@fortawesome/free-solid-svg-icons'
+library.add(faCopy, faCircleCheck)
 
 const appName = window.document.getElementsByTagName('title')[0]?.innerText || 'Laravel';
 
