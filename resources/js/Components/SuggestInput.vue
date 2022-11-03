@@ -14,6 +14,7 @@ const inputValue = ref("");
 const current = ref("0");
 const isHover = ref(false);
 const isFocus = ref(false);
+const zeroPaddingNo = ref(0);
 
 watch(inputValue, () => {
   if (isFocus.value && inputValue.value.length >= 1) {
@@ -47,6 +48,12 @@ const suggestionClick = (pokemon) => {
   inputValue.value = pokemon;
   results.value = [];
 }
+
+// TODO:ポケモンの情報、画像をajaxで取得するか検討
+const makeImagePath = pokedexNo => {
+  zeroPaddingNo.value = String(pokedexNo).padStart(3, "0");
+  return `/images/pokemon/sprites/${zeroPaddingNo.value}MS.png`;
+};
 </script>
 
 <template>
@@ -81,17 +88,23 @@ const suggestionClick = (pokemon) => {
 
     <ul
       v-show="isFocus && results.length"
-      class="w-48 text-sm font-medium mt-1 text-gray-900 bg-white rounded-lg border border-gray-200"
+      class="w-72 text-sm font-medium mt-1 text-gray-900 bg-white rounded-lg border border-gray-200"
     >
       <li
         v-for="result in results"
         :key="result.id"
-        class="block py-2 px-4 w-full border-b border-gray-200 cursor-pointer hover:bg-gray-100 hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:text-blue-700"
+        class="block py-1 px-3 w-full border-b border-gray-200 cursor-pointer hover:bg-gray-100 hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:text-blue-700"
         @click="suggestionClick(result.name)"
         @mouseover="changeHover"
         @mouseleave="changeHover"
       >
-        {{ result.name }}
+        <div class="flex items-center ">
+          <img
+            :alt="result.name"
+            :src="makeImagePath(result.id)"
+          >
+          <span>{{ result.name }}</span>
+        </div>
       </li>
     </ul>
   </div>
