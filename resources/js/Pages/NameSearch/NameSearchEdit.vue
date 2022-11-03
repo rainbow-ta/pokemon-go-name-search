@@ -1,5 +1,6 @@
 <script setup>
 import ComponentsHeader from '@/Components/ComponentsHeader.vue';
+import SuggestInput from '@/Components/SuggestInput.vue';
 
 // const props = defineProps({
 defineProps({
@@ -43,34 +44,9 @@ defineProps({
         </div>
       </div>
 
-      <div class="mb-10">
-        <input
-          id="exampleSearch"
-          type="search"
-          class="
-            form-control
-            block
-            w-full
-            px-3
-            py-1.5
-            text-base
-            font-normal
-            text-gray-700
-            bg-white bg-clip-padding
-            border border-solid border-gray-300
-            rounded
-            transition
-            ease-in-out
-            m-0
-            focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
-            mr-5
-            w-96
-          "
-          placeholder="ポケモン or フィルターを検索"
-        >
-      </div>
+      <suggest-input :pokemons="pokemons" />
 
-      <div class="bg-gray-50 rounded-lg border border-gray-200">
+      <div class="bg-gray-50 rounded-lg border border-gray-200 mt-10">
         <div class="flex justify-between items-center py-1 px-3 border-b">
           <button
             type="button"
