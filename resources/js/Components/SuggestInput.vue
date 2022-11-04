@@ -11,7 +11,6 @@ const props = defineProps({
 let shapingInputValue;
 const results = ref([]);
 const inputValue = ref("");
-const current = ref("0");
 const isHover = ref(false);
 const isFocus = ref(false);
 const zeroPaddingNo = ref(0);
@@ -44,7 +43,6 @@ const suggestionClick = (pokemon) => {
   changeHover();
   closeSuggestionList();
 
-  current.value = 0;
   inputValue.value = pokemon;
   results.value = [];
 }
@@ -86,6 +84,7 @@ const makeImagePath = pokedexNo => {
       @blur="closeSuggestionList"
     >
 
+    <!-- TODO:キー操作でサジェスト選択出来るようにする -->
     <ul
       v-show="isFocus && results.length"
       class="w-72 text-sm font-medium mt-1 text-gray-900 bg-white rounded-lg border border-gray-200"
