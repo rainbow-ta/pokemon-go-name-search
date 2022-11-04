@@ -93,12 +93,12 @@ const makeImagePath = pokedexNo => {
       <li
         v-for="result in results"
         :key="result.id"
-        class="block py-1 px-3 w-full border-b border-gray-200 cursor-pointer hover:bg-gray-100 hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:text-blue-700"
+        class="block py-1 px-3 w-full border-b border-gray-200 cursor-pointer hover:bg-gray-100 hover:text-blue-700"
         @click="suggestionClick(result.name)"
         @mouseover="changeHover"
         @mouseleave="changeHover"
       >
-        <div class="flex items-center ">
+        <div class="flex items-center">
           <img
             :alt="result.name"
             :src="makeImagePath(result.id)"
