@@ -13,11 +13,7 @@ defineProps({
     type: Array,
     required: true,
   },
-  searchList: {
-    type: Array,
-    required: true,
-  },
-  searchListFilters: {
+  searchWord: {
     type: Array,
     required: true,
   },
@@ -32,13 +28,6 @@ const generateSearchWords = (pokemonName) => {
     searchWords.value = pokemonName;
   }
 };
-// const getFilters = props.searchListFilters.map((obj) => obj.filter_id);
-
-// const makeImagePath = pokedexNo => {
-//   const zeroPaddingNo = String(pokedexNo).padStart(3, "0");
-
-//   return `/images/pokemon/sprites/${zeroPaddingNo}MS.png `;
-// };
 </script>
 
 <template>
@@ -49,7 +38,7 @@ const generateSearchWords = (pokemonName) => {
       <div class="max-w-screen-md mb-5 flex justify-between items-center">
         <div>
           <h1 class="text-2xl font-extrabold truncate">
-            {{ searchList[0].name }}
+            {{ searchWord[0].name }}
           </h1>
         </div>
       </div>

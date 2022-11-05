@@ -5,7 +5,7 @@ import { ref } from 'vue';
 import { Inertia } from '@inertiajs/inertia';
 
 defineProps({
-  searchLists: {
+  searchWords: {
     type: Object,
     required: true,
   },
@@ -113,16 +113,16 @@ const submit = () => {
         </thead>
         <tbody>
           <tr
-            v-for="searchList in searchLists"
-            :key="searchList.id"
+            v-for="searchWord in searchWords"
+            :key="searchWord.id"
           >
             <td class="border px-4 py-2 flex justify-center">
               <span class="cursor-pointer"><font-awesome-icon icon="fa-solid fa-copy" /></span>
             </td>
             <td class="border px-4 py-2">
               <!-- TODO:hover時に何かアニメーション付与する -->
-              <a :href="`/name-search/${searchList.id}/edit`">
-                {{ searchList.name }}
+              <a :href="`/name-search/${searchWord.id}/edit`">
+                {{ searchWord.name }}
               </a>
             </td>
           </tr>

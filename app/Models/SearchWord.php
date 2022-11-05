@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class SearchList extends Model
+class SearchWord extends Model
 {
     use HasFactory;
 
@@ -13,9 +13,4 @@ class SearchList extends Model
         'name',
         'user_id',
     ];
-
-    public function searchListFilters()
-    {
-        return $this->hasMany(SearchListFilter::class);
-    }
 }
