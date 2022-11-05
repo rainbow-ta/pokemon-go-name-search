@@ -1,4 +1,5 @@
 <script setup>
+import { ref, } from 'vue';
 import ComponentsHeader from '@/Components/ComponentsHeader.vue';
 import SuggestInput from '@/Components/SuggestInput.vue';
 
@@ -22,6 +23,15 @@ defineProps({
   },
 });
 
+const searchWords = ref("");
+
+const generateSearchWords = (pokemonName) => {
+  if (searchWords.value.length)
+    searchWords.value += ", " + pokemonName;
+  else {
+    searchWords.value = pokemonName;
+  }
+};
 // const getFilters = props.searchListFilters.map((obj) => obj.filter_id);
 
 // const makeImagePath = pokedexNo => {
@@ -44,7 +54,10 @@ defineProps({
         </div>
       </div>
 
-      <suggest-input :pokemons="pokemons" />
+      <suggest-input
+        :pokemons="pokemons"
+        @completeUserInputEvent="generateSearchWords"
+      />
 
       <div class="bg-gray-50 rounded-lg border border-gray-200 mt-10">
         <div class="flex justify-between items-center py-1 px-3 border-b">
@@ -85,6 +98,7 @@ defineProps({
           >Publish post</label>
           <textarea
             id="editor"
+            v-model="searchWords"
             rows="8"
             class="block px-0 w-full text-sm text-gray-800 bg-white border-0 focus:ring-0"
           />

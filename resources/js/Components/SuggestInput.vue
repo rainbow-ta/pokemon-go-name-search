@@ -52,6 +52,11 @@ const makeImagePath = pokedexNo => {
   zeroPaddingNo.value = String(pokedexNo).padStart(3, "0");
   return `/images/pokemon/sprites/${zeroPaddingNo.value}MS.png`;
 };
+
+const emit = defineEmits(['completeUserInputEvent']);
+const completeUserInput = (pokemonName) => {
+  emit('completeUserInputEvent', pokemonName);
+};
 </script>
 
 <template>
@@ -93,7 +98,7 @@ const makeImagePath = pokedexNo => {
         v-for="result in results"
         :key="result.id"
         class="block py-1 px-3 w-full border-b border-gray-200 cursor-pointer hover:bg-gray-100 hover:text-blue-700"
-        @click="suggestionClick(result.name)"
+        @click="suggestionClick(result.name), completeUserInput(result.name)"
         @mouseover="changeHover"
         @mouseleave="changeHover"
       >
