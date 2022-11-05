@@ -17,7 +17,6 @@ class DatabaseSeeder extends Seeder
         $this->call(UserSeeder::class);
         $this->call(SearchListSeeder::class);
         $this->call(FilterSeeder::class);
-        $this->call(SearchListFilterSeeder::class);
         $this->call(PokemonSeeder::class);
     }
 }

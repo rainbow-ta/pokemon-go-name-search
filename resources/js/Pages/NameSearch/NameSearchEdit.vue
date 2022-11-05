@@ -16,19 +16,7 @@ defineProps({
     type: Array,
     required: true,
   },
-  searchListFilters: {
-    type: Array,
-    required: true,
-  },
 });
-
-// const getFilters = props.searchListFilters.map((obj) => obj.filter_id);
-
-// const makeImagePath = pokedexNo => {
-//   const zeroPaddingNo = String(pokedexNo).padStart(3, "0");
-
-//   return `/images/pokemon/sprites/${zeroPaddingNo}MS.png `;
-// };
 </script>
 
 <template>

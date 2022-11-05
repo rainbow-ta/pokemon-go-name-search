@@ -6,7 +6,6 @@ use App\Http\Requests\TagCreateRequest;
 use App\Models\Filter;
 use App\Models\Pokemon;
 use App\Models\SearchList;
-use App\Models\SearchListFilter;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
@@ -38,7 +37,6 @@ class NameSearchController extends Controller
             // 'pokemons' => Pokemon::all(),
             'pokemons' => Pokemon::take(50)->get(),
             'searchList' => SearchList::where('id', $id)->get(),
-            'searchListFilters' => SearchListFilter::where('search_list_id', $id)->get(),
         ]);
     }
 }

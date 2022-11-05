@@ -13,9 +13,4 @@ class SearchList extends Model
         'name',
         'user_id',
     ];
-
-    public function searchListFilters()
-    {
-        return $this->hasMany(SearchListFilter::class);
-    }
 }
