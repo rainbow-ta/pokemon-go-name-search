@@ -3,8 +3,7 @@ import { ref, } from 'vue';
 import ComponentsHeader from '@/Components/ComponentsHeader.vue';
 import SuggestInput from '@/Components/SuggestInput.vue';
 
-// const props = defineProps({
-defineProps({
+const props = defineProps({
   filters: {
     type: Array,
     required: true,
@@ -13,19 +12,19 @@ defineProps({
     type: Array,
     required: true,
   },
-  searchWord: {
+  searchWords: {
     type: Array,
     required: true,
   },
 });
 
-const searchWords = ref("");
+const refSearchWords = ref(props.searchWords[0].search_word);
 
 const generateSearchWords = (pokemonName) => {
-  if (searchWords.value.length)
-    searchWords.value += ", " + pokemonName;
+  if (refSearchWords.value.length)
+    refSearchWords.value += "," + pokemonName;
   else {
-    searchWords.value = pokemonName;
+    refSearchWords.value = pokemonName;
   }
 };
 </script>
@@ -38,7 +37,7 @@ const generateSearchWords = (pokemonName) => {
       <div class="max-w-screen-md mb-5 flex justify-between items-center">
         <div>
           <h1 class="text-2xl font-extrabold truncate">
-            {{ searchWord[0].name }}
+            {{ props.searchWords[0].name }}
           </h1>
         </div>
       </div>
@@ -87,7 +86,7 @@ const generateSearchWords = (pokemonName) => {
           >Publish post</label>
           <textarea
             id="editor"
-            v-model="searchWords"
+            v-model="refSearchWords"
             rows="8"
             class="block px-0 w-full text-sm text-gray-800 bg-white border-0 focus:ring-0"
           />

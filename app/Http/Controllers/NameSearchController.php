@@ -36,7 +36,7 @@ class NameSearchController extends Controller
             // TODO:テスト後に修正する
             // 'pokemons' => Pokemon::all(),
             'pokemons' => Pokemon::take(50)->get(),
-            'searchWord' => SearchWord::where('id', $id)->get(),
+            'searchWords' => SearchWord::where('id', $id)->get(),
         ]);
     }
 }
