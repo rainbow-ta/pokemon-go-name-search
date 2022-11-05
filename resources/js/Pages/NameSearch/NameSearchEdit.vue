@@ -12,7 +12,7 @@ defineProps({
     type: Array,
     required: true,
   },
-  searchList: {
+  searchWord: {
     type: Array,
     required: true,
   },
@@ -27,7 +27,7 @@ defineProps({
       <div class="max-w-screen-md mb-5 flex justify-between items-center">
         <div>
           <h1 class="text-2xl font-extrabold truncate">
-            {{ searchList[0].name }}
+            {{ searchWord[0].name }}
           </h1>
         </div>
       </div>
