@@ -12,9 +12,11 @@ return new class extends Migration {
      */
     public function up()
     {
-        Schema::create('search_lists', function (Blueprint $table) {
+        Schema::create('search_words', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->text('search_word');
+            $table->string('memo');
             $table->unsignedBigInteger('user_id')->nullable();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
@@ -28,6 +30,6 @@ return new class extends Migration {
      */
     public function down()
     {
-        Schema::dropIfExists('search_lists');
+        Schema::dropIfExists('search_words');
     }
 };
