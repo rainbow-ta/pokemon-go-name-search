@@ -15,9 +15,9 @@ return new class extends Migration {
         Schema::create('search_words', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->text('search_word');
-            $table->string('memo');
-            $table->unsignedBigInteger('user_id')->nullable();
+            $table->text('search_word')->nullable();
+            $table->string('note')->nullable();
+            $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
