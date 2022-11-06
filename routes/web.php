@@ -37,6 +37,7 @@ Route::middleware([
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::resource(
         '/name-search',
+        // TODO:名前付きルートのより良い記述があればリファクタリングする
         App\Http\Controllers\NameSearchController::class,
         [
             'as' => 'nameSearch',

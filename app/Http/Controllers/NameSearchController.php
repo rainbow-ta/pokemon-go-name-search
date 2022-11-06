@@ -39,4 +39,14 @@ class NameSearchController extends Controller
             'searchWords' => SearchWord::where('id', $id)->get(),
         ]);
     }
+
+    public function update(TagCreateRequest $request)
+    {
+        SearchWord::where('id', $request->id)->update([
+            'name' => $request->tagName,
+            'search_word' => $request->searchWord,
+        ]);
+
+        return redirect()->route('nameSearch.name-search.edit', $request->id);
+    }
 }
