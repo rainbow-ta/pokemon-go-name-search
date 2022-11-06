@@ -36,7 +36,17 @@ class NameSearchController extends Controller
             // TODO:テスト後に修正する
             // 'pokemons' => Pokemon::all(),
             'pokemons' => Pokemon::take(50)->get(),
-            'searchWord' => SearchWord::where('id', $id)->get(),
+            'searchWords' => SearchWord::where('id', $id)->get(),
         ]);
+    }
+
+    public function update(TagCreateRequest $request)
+    {
+        SearchWord::where('id', $request->id)->update([
+            'name' => $request->tagName,
+            'search_word' => $request->searchWord,
+        ]);
+
+        return redirect()->route('nameSearch.name-search.edit', $request->id);
     }
 }

@@ -4,6 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
+// TODO:名前をNameSearchなど適したものに変更する
 class TagCreateRequest extends FormRequest
 {
     /**
