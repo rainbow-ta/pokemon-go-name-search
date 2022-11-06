@@ -24,10 +24,10 @@ const props = defineProps({
 });
 
 const generateSearchWords = (pokemonName) => {
-  if (form.searchWord.length)
-    form.searchWord += "," + pokemonName;
-  else {
+  if (form.searchWord === null)
     form.searchWord = pokemonName;
+  else {
+    form.searchWord += "," + pokemonName;
   }
 };
 
