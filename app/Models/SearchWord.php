@@ -11,6 +11,8 @@ class SearchWord extends Model
 
     protected $fillable = [
         'name',
+        'search_word',
+        'note',
         'user_id',
     ];
 }
