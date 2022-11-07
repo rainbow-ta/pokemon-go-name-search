@@ -14,7 +14,7 @@ return new class extends Migration {
     {
         Schema::create('search_words', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('tag_name', 30);
             $table->text('search_word')->nullable();
             $table->string('note')->nullable();
             $table->unsignedBigInteger('user_id');

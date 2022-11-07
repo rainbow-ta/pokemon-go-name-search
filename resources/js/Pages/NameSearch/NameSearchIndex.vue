@@ -122,7 +122,7 @@ const submit = () => {
             <td class="border px-4 py-2">
               <!-- TODO:hover時に何かアニメーション付与する -->
               <a :href="`/name-search/${searchWord.id}/edit`">
-                {{ searchWord.name }}
+                {{ searchWord.tag_name }}
               </a>
             </td>
           </tr>

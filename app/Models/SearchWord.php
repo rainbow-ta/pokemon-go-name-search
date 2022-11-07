@@ -10,7 +10,7 @@ class SearchWord extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name',
+        'tag_name',
         'search_word',
         'note',
         'user_id',

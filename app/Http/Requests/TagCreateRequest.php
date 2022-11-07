@@ -25,8 +25,7 @@ class TagCreateRequest extends FormRequest
     public function rules()
     {
         return [
-            // TODO:255文字だと過剰なため、カラム定義から見直す
-            'tagName' => 'required|max:255',
+            'tagName' => 'required|max:30',
             // TODO:user_idをどの段階でチェックするか検討する必要あり
             // （ログインユーザーのidと一致するかチェックする）
             // 'user_id' => 'required|integer',

@@ -33,7 +33,7 @@ const generateSearchWords = (pokemonName) => {
 
 const form = useForm({
   id: props.searchWords[0].id,
-  tagName: props.searchWords[0].name,
+  tagName: props.searchWords[0].tag_name,
   searchWord: props.searchWords[0].search_word,
 })
 

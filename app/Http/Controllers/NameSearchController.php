@@ -22,7 +22,7 @@ class NameSearchController extends Controller
     public function store(TagCreateRequest $request)
     {
         SearchWord::create([
-            'name' => $request->tagName,
+            'tag_name' => $request->tagName,
             'user_id' => Auth::id(),
         ]);
 
@@ -43,7 +43,7 @@ class NameSearchController extends Controller
     public function update(TagCreateRequest $request)
     {
         SearchWord::where('id', $request->id)->update([
-            'name' => $request->tagName,
+            'tag_name' => $request->tagName,
             'search_word' => $request->searchWord,
         ]);
 
