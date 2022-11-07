@@ -49,4 +49,11 @@ class NameSearchController extends Controller
 
         return redirect()->route('nameSearch.name-search.edit', $request->id);
     }
+
+    public function destroy(Request $request)
+    {
+        SearchWord::destroy($request->id);
+
+        return redirect()->route('nameSearch.name-search.index');
+    }
 }

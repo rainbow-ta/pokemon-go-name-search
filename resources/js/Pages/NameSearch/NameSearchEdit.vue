@@ -49,6 +49,12 @@ const submit = () => {
     },
   });
 }
+
+const deleteSearchWord = () => {
+  form.delete('/name-search/' + form.id, {
+    onBefore: () => confirm('削除すると元には戻せなくなりますが、本当によろしいですか？'),
+  })
+}
 </script>
 
 <template>
@@ -157,6 +163,7 @@ const submit = () => {
             type="submit"
             :disabled="form.processing"
             class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+            @click="deleteSearchWord"
           >
             削除
           </button>
