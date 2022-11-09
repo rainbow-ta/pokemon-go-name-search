@@ -4,7 +4,7 @@
       <header class="flex justify-between items-center py-4 md:py-8">
         <!-- logo - start -->
         <a
-          href="/"
+          href="/name-search"
           class="inline-flex items-center text-black-800 text-2xl md:text-3xl font-bold gap-2.5"
           aria-label="logo"
         >
