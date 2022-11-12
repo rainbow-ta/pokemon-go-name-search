@@ -1,12 +1,17 @@
 <template>
-  <div :id="wrapperId" class="simple-typeahead">
+  <div
+    :id="wrapperId"
+    class="simple-typeahead"
+  >
     <input
-      ref="inputRef"
       :id="inputId"
+      ref="inputRef"
+      v-model="input"
       class="simple-typeahead-input"
       type="text"
       :placeholder="placeholder"
-      v-model="input"
+      autocomplete="off"
+      v-bind="$attrs"
       @input="onInput"
       @focus="onFocus"
       @blur="onBlur"
@@ -14,26 +19,51 @@
       @keydown.up.prevent="onArrowUp"
       @keydown.enter.prevent="selectCurrentSelection"
       @keydown.tab.prevent="selectCurrentSelectionTab"
-      autocomplete="off"
-      v-bind="$attrs"
-    />
-    <div v-if="isListVisible" class="simple-typeahead-list">
-      <div class="simple-typeahead-list-header" v-if="$slots['list-header']"><slot name="list-header"></slot></div>
+    >
+    <div
+      v-if="isListVisible"
+      class="simple-typeahead-list"
+    >
       <div
-        class="simple-typeahead-list-item"
-        :class="{ 'simple-typeahead-list-item-active': currentSelectionIndex == index }"
+        v-if="$slots['list-header']"
+        class="simple-typeahead-list-header"
+      >
+        <slot name="list-header" />
+      </div>
+      <div
         v-for="(item, index) in filteredItems"
         :key="index"
+        class="simple-typeahead-list-item"
+        :class="{ 'simple-typeahead-list-item-active': currentSelectionIndex == index }"
         @mousedown.prevent
         @click="selectItem(item)"
         @mouseenter="currentSelectionIndex = index"
       >
-        <span class="simple-typeahead-list-item-text" :data-text="itemProjection(item)" v-if="$slots['list-item-text']"
-          ><slot name="list-item-text" :item="item" :itemProjection="itemProjection" :boldMatchText="boldMatchText"></slot
-        ></span>
-        <span class="simple-typeahead-list-item-text" :data-text="itemProjection(item)" v-html="boldMatchText(itemProjection(item))" v-else></span>
+        <span
+          v-if="$slots['list-item-text']"
+          class="simple-typeahead-list-item-text"
+          :data-text="itemProjection(item)"
+        >
+          <slot
+            name="list-item-text"
+            :item="item"
+            :itemProjection="itemProjection"
+            :boldMatchText="boldMatchText"
+          />
+        </span>
+        <span
+          v-else
+          class="simple-typeahead-list-item-text"
+          :data-text="itemProjection(item)"
+          v-html="boldMatchText(itemProjection(item))"
+        />
       </div>
-      <div class="simple-typeahead-list-footer" v-if="$slots['list-footer']"><slot name="list-footer"></slot></div>
+      <div
+        v-if="$slots['list-footer']"
+        class="simple-typeahead-list-footer"
+      >
+        <slot name="list-footer" />
+      </div>
     </div>
   </div>
 </template>
