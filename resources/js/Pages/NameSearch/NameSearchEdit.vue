@@ -23,13 +23,13 @@ const props = defineProps({
   },
 });
 
-const generateSearchWords = (pokemonName) => {
-  if (form.searchWord === null)
-    form.searchWord = pokemonName;
-  else {
-    form.searchWord += "," + pokemonName;
-  }
-};
+// const generateSearchWords = (pokemonName) => {
+//   if (form.searchWord === null)
+//     form.searchWord = pokemonName;
+//   else {
+//     form.searchWord += "," + pokemonName;
+//   }
+// };
 
 const form = useForm({
   id: props.searchWords[0].id,
@@ -99,9 +99,21 @@ const deleteSearchWord = () => {
           </div>
         </div>
 
-        <suggest-input
+        <!-- <suggest-input
           :pokemons="pokemons"
           @completeUserInputEvent="generateSearchWords"
+        /> -->
+
+        <suggest-input
+          id="typeahead_id"
+          placeholder="Start writing..."
+          :items="['アーボ', 'コラッタ',]"
+          :minInputLength="1"
+          :itemProjection="itemProjectionFunction"
+          @selectItem="selectItemEventHandler"
+          @onInput="onInputEventHandler"
+          @onFocus="onFocusEventHandler"
+          @onBlur="onBlurEventHandler"
         />
 
         <div class="bg-gray-50 rounded-lg border border-gray-200 mt-10">
