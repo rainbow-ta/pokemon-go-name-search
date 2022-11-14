@@ -107,13 +107,13 @@ const deleteSearchWord = () => {
         <suggest-input
           id="typeahead_id"
           placeholder="Start writing..."
-          :items="['アーボ', 'コラッタ',]"
-          :minInputLength="1"
-          :itemProjection="itemProjectionFunction"
-          @selectItem="selectItemEventHandler"
-          @onInput="onInputEventHandler"
-          @onFocus="onFocusEventHandler"
-          @onBlur="onBlurEventHandler"
+          :items="['アーボ', 'アーボック', 'コラッタ',]"
+          :min-input-length="1"
+          :item-projection="itemProjectionFunction"
+          @select-item="selectItemEventHandler"
+          @on-input="onInputEventHandler"
+          @on-focus="onFocusEventHandler"
+          @on-blur="onBlurEventHandler"
         />
 
         <div class="bg-gray-50 rounded-lg border border-gray-200 mt-10">

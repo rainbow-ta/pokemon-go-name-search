@@ -47,8 +47,8 @@
           <slot
             name="list-item-text"
             :item="item"
-            :itemProjection="itemProjection"
-            :boldMatchText="boldMatchText"
+            :item-projection="itemProjection"
+            :bold-match-text="boldMatchText"
           />
         </span>
         <span
