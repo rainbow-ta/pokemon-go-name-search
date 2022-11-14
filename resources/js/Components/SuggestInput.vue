@@ -73,11 +73,11 @@ import { defineComponent } from 'vue';
 
 export default /*#__PURE__*/ defineComponent({
   name: 'Vue3SimpleTypeahead',
-  emits: ['onInput', 'onFocus', 'onBlur', 'selectItem'],
   inheritAttrs: false,
   props: {
     id: {
       type: String,
+      default: null,
     },
     placeholder: {
       type: String,
@@ -88,6 +88,7 @@ export default /*#__PURE__*/ defineComponent({
       required: true,
     },
     defaultItem: {
+      type: null,
       default: null,
     },
     itemProjection: {
@@ -115,11 +116,7 @@ export default /*#__PURE__*/ defineComponent({
       default: true,
     },
   },
-  mounted() {
-    if (this.defaultItem !== undefined && this.defaultItem !== null) {
-      this.selectItem(this.defaultItem);
-    }
-  },
+  emits: ['onInput', 'onFocus', 'onBlur', 'selectItem'],
   data() {
     return {
       inputId: this.id || `simple_typeahead_${(Math.random() * 1000).toFixed()}`,
@@ -127,6 +124,27 @@ export default /*#__PURE__*/ defineComponent({
       isInputFocused: false,
       currentSelectionIndex: 0,
     };
+  },
+  computed: {
+    wrapperId() {
+      return `${this.inputId}_wrapper`;
+    },
+    filteredItems() {
+      const regexp = new RegExp(this.escapeRegExp(this.input), 'i');
+
+      return this.items.filter((item) => this.itemProjection(item).match(regexp));
+    },
+    isListVisible() {
+      return this.isInputFocused && this.input.length >= this.minInputLength && this.filteredItems.length > this.minItemLength;
+    },
+    currentSelection() {
+      return this.isListVisible && this.currentSelectionIndex < this.filteredItems.length ? this.filteredItems[this.currentSelectionIndex] : undefined;
+    },
+  },
+  mounted() {
+    if (this.defaultItem !== undefined && this.defaultItem !== null) {
+      this.selectItem(this.defaultItem);
+    }
   },
   methods: {
     onInput() {
@@ -210,22 +228,6 @@ export default /*#__PURE__*/ defineComponent({
     blurInput() {
       this.$refs.inputRef.blur();
       this.onBlur();
-    },
-  },
-  computed: {
-    wrapperId() {
-      return `${this.inputId}_wrapper`;
-    },
-    filteredItems() {
-      const regexp = new RegExp(this.escapeRegExp(this.input), 'i');
-
-      return this.items.filter((item) => this.itemProjection(item).match(regexp));
-    },
-    isListVisible() {
-      return this.isInputFocused && this.input.length >= this.minInputLength && this.filteredItems.length > this.minItemLength;
-    },
-    currentSelection() {
-      return this.isListVisible && this.currentSelectionIndex < this.filteredItems.length ? this.filteredItems[this.currentSelectionIndex] : undefined;
     },
   },
 });
