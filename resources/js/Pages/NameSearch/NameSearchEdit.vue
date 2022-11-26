@@ -30,6 +30,18 @@ const props = defineProps({
 //     form.searchWord += "," + pokemonName;
 //   }
 // };
+// タグ名の編集
+const isEditTagName = ref(false);
+const changeIsEditTagName = () => isEditTagName.value = !isEditTagName.value;
+const editTagName = () => {
+  changeIsEditTagName();
+  vFocus;
+}
+const vFocus = {
+  mounted(el) {
+    el.focus();
+  }
+}
 
 const form = useForm({
   id: props.searchWords[0].id,
@@ -91,11 +103,46 @@ const deleteSearchWord = () => {
 
 
       <form @submit.prevent="submit">
-        <div class="max-w-screen-md mb-5 flex justify-between items-center">
-          <div>
-            <h1 class="text-2xl font-extrabold truncate">
+        <div class="mb-5">
+          <!-- TODO:コンポーネント化する -->
+          <input
+            v-if="isEditTagName"
+            v-model="form.tagName"
+            v-focus
+            type="text"
+            class="
+              form-control
+              block
+              w-full
+              px-3
+              py-1.5
+              text-base
+              font-normal
+              text-gray-700
+              bg-white bg-clip-padding
+              border border-solid border-gray-300
+              rounded
+              transition
+              ease-in-out
+              m-0
+              focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
+              mr-5
+              w-96
+            "
+            @blur="changeIsEditTagName"
+          >
+          <div
+            v-else
+            class="flex items-center cursor-pointer inline-block"
+            @click="editTagName"
+          >
+            <font-awesome-icon
+              class="text-lg mr-1"
+              icon="fa-solid fa-pen-to-square"
+            />
+            <span class="text-2xl font-extrabold truncate">
               {{ form.tagName }}
-            </h1>
+            </span>
           </div>
         </div>
 
