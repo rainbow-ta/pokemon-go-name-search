@@ -23,6 +23,13 @@ const props = defineProps({
   },
 });
 
+// const generateSearchWords = (pokemonName) => {
+//   if (form.searchWord === null)
+//     form.searchWord = pokemonName;
+//   else {
+//     form.searchWord += "," + pokemonName;
+//   }
+// };
 // タグ名の編集
 const isEditTagName = ref(false);
 const changeIsEditTagName = () => isEditTagName.value = !isEditTagName.value;
@@ -35,14 +42,6 @@ const vFocus = {
     el.focus();
   }
 }
-
-const generateSearchWords = (pokemonName) => {
-  if (form.searchWord === null)
-    form.searchWord = pokemonName;
-  else {
-    form.searchWord += "," + pokemonName;
-  }
-};
 
 const form = useForm({
   id: props.searchWords[0].id,
@@ -147,9 +146,21 @@ const deleteSearchWord = () => {
           </div>
         </div>
 
-        <suggest-input
+        <!-- <suggest-input
           :pokemons="pokemons"
           @completeUserInputEvent="generateSearchWords"
+        /> -->
+
+        <suggest-input
+          id="typeahead_id"
+          placeholder="Start writing..."
+          :items="['アーボ', 'アーボック', 'コラッタ',]"
+          :min-input-length="1"
+          :item-projection="itemProjectionFunction"
+          @select-item="selectItemEventHandler"
+          @on-input="onInputEventHandler"
+          @on-focus="onFocusEventHandler"
+          @on-blur="onBlurEventHandler"
         />
 
         <div class="bg-gray-50 rounded-lg border border-gray-200 mt-10">
