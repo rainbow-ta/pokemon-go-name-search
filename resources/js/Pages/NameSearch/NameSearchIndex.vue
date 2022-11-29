@@ -98,36 +98,34 @@ const submit = () => {
         </div>
       </form>
 
-      <div class="flex justify-center">
-        <table class="table-fixed min-w-full">
-          <thead class="bg-gray-50">
-            <tr>
-              <th class="w-1/12 px-4 py-2">
-                コピー
-              </th>
-              <th class="w-10/12 px-4 py-2">
-                保存済みのタグ
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr
-              v-for="searchWord in searchWords"
-              :key="searchWord.id"
-            >
-              <td class="border px-4 py-2 flex justify-center">
-                <span class="cursor-pointer"><font-awesome-icon icon="fa-solid fa-copy" /></span>
-              </td>
-              <td class="border px-4 py-2">
-                <!-- TODO:hover時に何かアニメーション付与する -->
-                <a :href="`/name-search/${searchWord.id}/edit`">
-                  {{ searchWord.tag_name }}
-                </a>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+      <table class="table-fixed max-w-screen-lg">
+        <thead class="bg-gray-50">
+          <tr>
+            <th class="w-1/12 px-4 py-2">
+              コピー
+            </th>
+            <th class="w-11/12 px-4 py-2">
+              保存済みのタグ
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            v-for="searchWord in searchWords"
+            :key="searchWord.id"
+          >
+            <td class="border px-4 py-2 flex justify-center">
+              <span class="cursor-pointer"><font-awesome-icon icon="fa-solid fa-copy" /></span>
+            </td>
+            <td class="border px-4 py-2">
+              <!-- TODO:hover時に何かアニメーション付与する -->
+              <a :href="`/name-search/${searchWord.id}/edit`">
+                {{ searchWord.tag_name }}
+              </a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
       <!-- TODO:ページネーションを実装する -->
     </div>
   </base-layout>
