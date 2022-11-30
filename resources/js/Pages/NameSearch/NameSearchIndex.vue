@@ -113,12 +113,12 @@ const submit = () => {
           <tr
             v-for="searchWord in searchWords"
             :key="searchWord.id"
+            class="hover:bg-gray-50"
           >
             <td class="border px-4 py-2 flex justify-center">
               <span class="cursor-pointer"><font-awesome-icon icon="fa-solid fa-copy" /></span>
             </td>
             <td class="border px-4 py-2">
-              <!-- TODO:hover時に何かアニメーション付与する -->
               <a :href="`/name-search/${searchWord.id}/edit`">
                 {{ searchWord.tag_name }}
               </a>
