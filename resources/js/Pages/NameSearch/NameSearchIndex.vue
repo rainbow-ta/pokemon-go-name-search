@@ -62,14 +62,16 @@ const submit = () => {
       </div>
 
       <form @submit.prevent="submit">
-        <div class="flex items-center mb-5">
+        <div class="md:flex md:items-center mb-5">
           <input
             v-model="form.tagName"
             type="search"
             class="
               form-control
-              block
               w-full
+              md:w-96
+              m-0
+              md:mr-5
               px-3
               py-1.5
               text-base
@@ -80,10 +82,7 @@ const submit = () => {
               rounded
               transition
               ease-in-out
-              m-0
               focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
-              mr-5
-              w-96
             "
             placeholder="タグ名を入力してください"
           >
@@ -91,7 +90,7 @@ const submit = () => {
           <button
             type="submit"
             :disabled="form.processing"
-            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-5"
+            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-3 md:mt-0"
           >
             保存
           </button>
