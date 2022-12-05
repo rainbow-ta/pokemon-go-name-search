@@ -97,13 +97,13 @@ const submit = () => {
         </div>
       </form>
 
-      <table class="table-fixed max-w-screen-lg">
+      <table class="table-fixed w-full max-w-screen-lg">
         <thead class="bg-gray-50">
-          <tr>
-            <th class="w-1/12 px-4 py-2">
+          <tr class="whitespace-nowrap">
+            <th class="w-3/12 md:w-1/12 px-4 py-2">
               コピー
             </th>
-            <th class="w-11/12 px-4 py-2">
+            <th class="w-9/12 md:w-11/12 px-4 py-2">
               保存済みのタグ
             </th>
           </tr>
@@ -117,7 +117,7 @@ const submit = () => {
             <td class="border px-4 py-2 flex justify-center">
               <span class="cursor-pointer"><font-awesome-icon icon="fa-solid fa-copy" /></span>
             </td>
-            <td class="border px-4 py-2">
+            <td class="border px-4 py-2 truncate">
               <a :href="`/name-search/${searchWord.id}/edit`">
                 {{ searchWord.tag_name }}
               </a>
