@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-white lg:mb-16">
+  <div class="bg-white mb-8 lg:mb-16">
     <div class="max-w-screen-xl px-4 md:px-8 mx-auto">
       <header class="flex justify-between items-center py-4 md:py-8">
         <!-- logo - start -->

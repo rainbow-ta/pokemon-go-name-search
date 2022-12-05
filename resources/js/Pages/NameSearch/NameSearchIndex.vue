@@ -62,14 +62,16 @@ const submit = () => {
       </div>
 
       <form @submit.prevent="submit">
-        <div class="flex items-center mb-5">
+        <div class="md:flex md:items-center mb-5">
           <input
             v-model="form.tagName"
             type="search"
             class="
               form-control
-              block
               w-full
+              md:w-96
+              m-0
+              md:mr-5
               px-3
               py-1.5
               text-base
@@ -80,10 +82,7 @@ const submit = () => {
               rounded
               transition
               ease-in-out
-              m-0
               focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
-              mr-5
-              w-96
             "
             placeholder="タグ名を入力してください"
           >
@@ -91,43 +90,41 @@ const submit = () => {
           <button
             type="submit"
             :disabled="form.processing"
-            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-5"
+            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-3 md:mt-0"
           >
             保存
           </button>
         </div>
       </form>
 
-      <div class="flex justify-center">
-        <table class="table-fixed min-w-full">
-          <thead class="bg-gray-50">
-            <tr>
-              <th class="w-1/12 px-4 py-2">
-                コピー
-              </th>
-              <th class="w-10/12 px-4 py-2">
-                保存済みのタグ
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr
-              v-for="searchWord in searchWords"
-              :key="searchWord.id"
-            >
-              <td class="border px-4 py-2 flex justify-center">
-                <span class="cursor-pointer"><font-awesome-icon icon="fa-solid fa-copy" /></span>
-              </td>
-              <td class="border px-4 py-2">
-                <!-- TODO:hover時に何かアニメーション付与する -->
-                <a :href="`/name-search/${searchWord.id}/edit`">
-                  {{ searchWord.tag_name }}
-                </a>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+      <table class="table-fixed w-full max-w-screen-lg">
+        <thead class="bg-gray-50">
+          <tr class="whitespace-nowrap">
+            <th class="w-3/12 md:w-1/12 px-4 py-2">
+              コピー
+            </th>
+            <th class="w-9/12 md:w-11/12 px-4 py-2">
+              保存済みのタグ
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            v-for="searchWord in searchWords"
+            :key="searchWord.id"
+            class="hover:bg-gray-50"
+          >
+            <td class="border px-4 py-2 flex justify-center">
+              <span class="cursor-pointer"><font-awesome-icon icon="fa-solid fa-copy" /></span>
+            </td>
+            <td class="border px-4 py-2 truncate">
+              <a :href="`/name-search/${searchWord.id}/edit`">
+                {{ searchWord.tag_name }}
+              </a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
       <!-- TODO:ページネーションを実装する -->
     </div>
   </base-layout>
